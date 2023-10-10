@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public GameObject objectToSpawn;
-
-    public Vector3 objectPosition = new Vector3(0, 0, 0);
-
-
+    public GameObject bullet;
+    public GameObject spawn;
     void Start()
     {
 
@@ -17,7 +14,7 @@ public class Spawn : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(objectToSpawn,objectPosition,Quaternion.identity);
+            Instantiate(bullet,spawn.transform.position,Quaternion.identity);
         }
     }
 }
