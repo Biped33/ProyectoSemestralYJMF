@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.right.normalized * enemySpeed * Time.deltaTime);
+        transform.Translate(Vector3.up.normalized * enemySpeed * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision collision)
     {
