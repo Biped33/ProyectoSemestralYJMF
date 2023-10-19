@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
     public GameObject enemy;
     float time = 1f;
-    public float randomdX;
-    public float randomdY;
+    public float randomX;
+    public float randomY;
     void Start()
     {
 
@@ -17,13 +15,18 @@ public class EnemySpawn : MonoBehaviour
 
     void Update()
     {
+        SpawnEnemy();
+    }
+
+    private void SpawnEnemy()
+    {
         time -= Time.deltaTime;
         if (time < 0)
         {
-            randomdX = Random.Range(1,3.5f);
-            randomdY = Random.Range(-3.5f,3.5f);
-            transform.position = new Vector3(randomdX, randomdY, 0);
-            Instantiate(enemy, transform.position, enemy.transform.rotation);
+            randomX = Random.Range(12, 15);
+            randomY = Random.Range(-4, 4);
+            Vector3 enemySpawn = new Vector3(randomX, randomY, 0);
+            Instantiate(enemy, enemySpawn, transform.rotation);
             time = 3f;
         }
     }

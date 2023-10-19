@@ -1,24 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
     public int enemySpeed;
-
     void Start()
     {
-     
+
     }
-
-
     void Update()
     {
-        transform.Translate(Vector3.up.normalized * enemySpeed * Time.deltaTime);
+        EnemyMovement();
+
+    }
+    private void EnemyMovement()
+    {
+        transform.Translate(Vector3.left.normalized * enemySpeed * Time.deltaTime);
+        Destroy(gameObject, 5f);
+
     }
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
+        Console.WriteLine("Choco enemigo");
     }
 
 }
