@@ -22,10 +22,4 @@ public class BulletBehaviour : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
-        Console.WriteLine("Choco bala");
-    }
-
 }

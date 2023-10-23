@@ -21,13 +21,13 @@ public class EnemySpawn : MonoBehaviour
     private void SpawnEnemy()
     {
         time -= Time.deltaTime;
-        if (time < 0)
+        if (time <= 0)
         {
             randomX = Random.Range(12, 15);
             randomY = Random.Range(-4, 4);
             Vector3 enemySpawn = new Vector3(randomX, randomY, 0);
             Instantiate(enemy, enemySpawn, transform.rotation);
-            time = 3f;
+            time = 1f;
         }
     }
 }

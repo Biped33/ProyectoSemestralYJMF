@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    private ScoreBehaviour enemyscore;
     public int enemySpeed;
+    private int damage = 0;
     void Start()
     {
-
+        enemyscore = FindObjectOfType<ScoreBehaviour>();
     }
     void Update()
     {
@@ -19,10 +21,26 @@ public class EnemyBehaviour : MonoBehaviour
         Destroy(gameObject, 5f);
 
     }
+
+    public void EnemyDamage(int damageToPlayer)
+    {
+        damage = damage - damageToPlayer;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
-        Console.WriteLine("Choco enemigo");
+        if (collision.gameObject.tag == "Bullets")
+        {
+            enemyscore.AddPoints(100);
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+        
     }
+
 
 }

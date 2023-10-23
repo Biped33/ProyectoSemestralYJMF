@@ -7,8 +7,12 @@ public class FireWall : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(collision.gameObject);
-        Console.WriteLine("Choco Pared");
+        if (collision.gameObject.tag == "Bullets")
+        {
+            Destroy(collision.gameObject);
+
+        }
+
     }
 
 }

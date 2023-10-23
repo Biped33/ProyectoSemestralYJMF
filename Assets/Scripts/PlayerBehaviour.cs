@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     private int playerSpeed = 5;
+    private int life = 3;
+    private EnemyBehaviour enemyDamage;
     void Start()
     {
 
@@ -25,13 +27,17 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.Translate(Vector3.down.normalized * playerSpeed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.D))
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
         {
-            transform.Translate(Vector3.right.normalized * playerSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.left.normalized * playerSpeed * Time.deltaTime);
+            enemyDamage.EnemyDamage(1);
+            if (life == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
