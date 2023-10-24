@@ -4,22 +4,27 @@ using UnityEngine;
 using TMPro;
 public class ScoreBehaviour : MonoBehaviour
 {
-    private TMP_Text textcomponent;
+    private TMP_Text enemyscore;
     private int score = 0;
     void Start()
     {
-        textcomponent = GetComponent<TMP_Text>();
+        enemyscore = GetComponent<TMP_Text>();
     }
-
-
     void Update()
     {
-        textcomponent.text = "Score: " + score;
+        ScoreTexts();
     }
-
+    private void ScoreTexts()
+    {
+        enemyscore.text = "Score: " + score;
+    }
     public void AddPoints(int value)
     {
-        score = score + value;
+        score += value;
+    }
+    public void SubtractPoints (int value)
+    {
+        score -= value;
     }
 
 

@@ -8,16 +8,11 @@ public class EnemySpawn : MonoBehaviour
     public float randomY;
     void Start()
     {
-
-
     }
-
-
     void Update()
     {
         SpawnEnemy();
     }
-
     private void SpawnEnemy()
     {
         time -= Time.deltaTime;

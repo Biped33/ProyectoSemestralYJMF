@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,19 +6,15 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     private int playerSpeed = 5;
-    private int life = 3;
-    private EnemyBehaviour enemyDamage;
-    void Start()
+    private int life = 300;
+    private void Start()
     {
-
     }
-    void Update()
+    private void Update()
     {
         PlayerMovement(transform, playerSpeed);
     }
-
-
-    void PlayerMovement(Transform transform, int playerSpeed)
+    private void PlayerMovement(Transform transform, int playerSpeed)
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -28,16 +25,14 @@ public class PlayerBehaviour : MonoBehaviour
             transform.Translate(Vector3.down.normalized * playerSpeed * Time.deltaTime);
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
+    public void TakeDamage(int enemyDamage)
     {
-        if (collision.gameObject.tag == "Enemy")
+        life -= enemyDamage;
+        if (life <= 0)
         {
-            enemyDamage.EnemyDamage(1);
-            if (life == 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
+
+   
 }

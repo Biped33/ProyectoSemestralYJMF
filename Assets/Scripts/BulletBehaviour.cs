@@ -8,9 +8,7 @@ public class BulletBehaviour : MonoBehaviour
     public int bulletSpeed = 10;
     void Start()
     {
-
     }
-
     void Update()
     {
         BulletMovement();
@@ -19,7 +17,6 @@ public class BulletBehaviour : MonoBehaviour
     private void BulletMovement()
     {
         transform.Translate(Vector3.right.normalized * bulletSpeed * Time.deltaTime);
-
     }
 
 }
