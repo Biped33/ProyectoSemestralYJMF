@@ -29,6 +29,7 @@ public class EnemyBehaviour : MonoBehaviour
             enemyscore.AddPoints(100);
             Destroy(collision.gameObject);
             Destroy(gameObject); 
+            
         }
         if (collision.gameObject.CompareTag("Player"))
         {

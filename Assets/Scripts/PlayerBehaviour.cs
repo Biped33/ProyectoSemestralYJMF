@@ -30,7 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
         life -= enemyDamage;
         if (life <= 0)
         {
-            Destroy(gameObject);
+            WinLoseConditions.instance.LoseCondition();
         }
     }
 
