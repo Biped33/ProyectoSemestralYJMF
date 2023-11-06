@@ -8,7 +8,6 @@ public class AllButtons : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-
     public void ExitButton()
     {
         Application.Quit();
@@ -24,5 +23,9 @@ public class AllButtons : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void HowToPlay()
+    {
+        SceneManager.LoadScene(4);
     }
 }
