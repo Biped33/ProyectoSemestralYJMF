@@ -444,7 +444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946000, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: WallUp
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_RootOrder
@@ -460,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.92
+      value: 3.81
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -711,7 +711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946000, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: WallDown
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_RootOrder
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.92
+      value: 4.05
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -862,7 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56143d37eaf74c48adbd6efd4eb7dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 5566146679689098071, guid: 39c6d552b4d390b4f825edcfd28bf8a6, type: 3}
+  enemy: {fileID: 2369796875236499689, guid: 7f5073f9d9bb21a4f9f0a11c6f4dbf3b, type: 3}
   randomX: 0
   randomY: 0
 --- !u!1 &1630249062
@@ -1354,7 +1354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 955521145952886323, guid: 168b92d4c82b220469014ebcf648ac1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.87
+      value: -7.11
       objectReference: {fileID: 0}
     - target: {fileID: 955521145952886323, guid: 168b92d4c82b220469014ebcf648ac1e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1439,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.96
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_LocalPosition.z

@@ -9,6 +9,8 @@ TagManager:
   - Bullets Spawn
   - Lechuga
   - Wall
+  - WallUp
+  - WallDown
   layers:
   - Default
   - TransparentFX
