@@ -14,6 +14,7 @@ public class EnemyShipBehaviour : MonoBehaviour
     void Start()
     {
         hide = GetComponent<SpriteRenderer>();
+        sCollider = GetComponent<SphereCollider>();
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviour>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
