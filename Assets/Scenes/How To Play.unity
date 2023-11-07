@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -251,7 +251,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -868,8 +868,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -717, y: -317}
-  m_SizeDelta: {x: 181.237, y: 167.8}
+  m_AnchoredPosition: {x: -683.93774, y: -323.2798}
+  m_SizeDelta: {x: 228.4545, y: 211.5167}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744332933
 MonoBehaviour:
@@ -945,8 +945,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 722.79, y: -452.96}
-  m_SizeDelta: {x: 474.4276, y: 174.0716}
+  m_AnchoredPosition: {x: 650, y: -443.31}
+  m_SizeDelta: {x: 527.0466, y: 193.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &767207170
 MonoBehaviour:
@@ -1077,8 +1077,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -805.97, y: 26.183}
-  m_SizeDelta: {x: 222.8167, y: 206.2977}
+  m_AnchoredPosition: {x: -768.37, y: -13}
+  m_SizeDelta: {x: 282.4421, y: 254.2388}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1401841996
 MonoBehaviour:
@@ -1424,8 +1424,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -815, y: 330}
-  m_SizeDelta: {x: 204.7554, y: 189.5755}
+  m_AnchoredPosition: {x: -768.36835, y: 311.7777}
+  m_SizeDelta: {x: 304.1041, y: 233.8423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767792371
 MonoBehaviour:
