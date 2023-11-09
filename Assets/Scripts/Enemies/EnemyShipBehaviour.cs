@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyShipBehaviour : MonoBehaviour
 {
+    public Animator deadAnimation;
     private ScoreBehaviour enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
-    private int enemySpeed = 10;
-    public Animator deadAnimation;
     private SpriteRenderer hide;
     private SphereCollider sCollider;
+    private int enemySpeed = 10;
     void Start()
     {
         hide = GetComponent<SpriteRenderer>();
@@ -26,11 +26,6 @@ public class EnemyShipBehaviour : MonoBehaviour
     private void EnemyMovement()
     {
         transform.Translate(Vector3.left.normalized * enemySpeed * Time.deltaTime);
-    }
-
-    private void AutoDestroy()
-    {
-        Destroy(gameObject);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -51,5 +46,9 @@ public class EnemyShipBehaviour : MonoBehaviour
             lifesUI.SubstractLifes(1);
             Destroy(gameObject);
         }
+    }
+    private void AutoDestroy()
+    {
+        Destroy(gameObject);
     }
 }
