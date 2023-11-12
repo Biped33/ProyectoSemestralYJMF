@@ -6,6 +6,7 @@ public class BulletSpawn : MonoBehaviour
 {
     public GameObject bullet;
     private AudioSource audioComponent;
+    private float shootRecharge = 1f;
     void Start()
     {
         audioComponent = GetComponent<AudioSource>();
@@ -16,11 +17,12 @@ public class BulletSpawn : MonoBehaviour
     }
     private void SpawnBullet()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            
+        shootRecharge-= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space) && shootRecharge <= 0) 
         {
             audioComponent.Play();
             Instantiate(bullet, transform.position, Quaternion.identity);
+            shootRecharge = 0.3f;
         }
 
     }

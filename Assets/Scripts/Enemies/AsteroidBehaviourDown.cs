@@ -2,7 +2,7 @@ using System;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
-public class AsteroidBehaviour : MonoBehaviour
+public class AsteroidBehaviourDown : MonoBehaviour
 {
     private ScoreBehaviour enemyscore;
     private PlayerBehaviour playersLife;
@@ -12,7 +12,7 @@ public class AsteroidBehaviour : MonoBehaviour
 
     void Start()
     {
-        enemyPatroll = new Vector3(-1, Mathf.Sin(30f), 0);
+        enemyPatroll = new Vector3(-1, Mathf.Cos(90f), 0);
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviour>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
@@ -37,7 +37,7 @@ public class AsteroidBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playersLife.TakeDamage(100);
-            enemyscore.SubtractPoints(200);
+            enemyscore.SubtractPoints(100);
             lifesUI.SubstractLifes(1);
             Destroy(gameObject);
         }

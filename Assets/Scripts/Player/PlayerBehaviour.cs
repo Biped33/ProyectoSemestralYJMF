@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     private int playerSpeed = 5;
-    private int life = 300;
+    private int life = 500;
     private SpriteRenderer spriteShip;
     public Sprite upShip, normalShip, downShip;
     private void Start()

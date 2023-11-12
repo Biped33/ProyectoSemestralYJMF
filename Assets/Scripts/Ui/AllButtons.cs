@@ -8,13 +8,17 @@ public class AllButtons : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    public void ExitButton()
+    public void Loadlevel2()
     {
-        Application.Quit();
+        SceneManager.LoadScene(2);
     }
-    public void RetryButtonWin()
+    public void LoadLevel3()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
+    }
+    public void LoadFinalScene()
+    {
+        SceneManager.LoadScene(6);
     }
     public void RetryButtonLose()
     {
@@ -26,6 +30,10 @@ public class AllButtons : MonoBehaviour
     }
     public void HowToPlay()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(8);
+    }
+    public void ExitButton()
+    {
+        Application.Quit();
     }
 }

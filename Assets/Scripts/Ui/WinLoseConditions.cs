@@ -17,14 +17,23 @@ public class WinLoseConditions : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void WinCondition()
+    public void WinConditionLevel1()
     {
 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
+    public void WinConditionLevel2()
+    {
 
+        SceneManager.LoadScene(4);
+    }
+    public void WinConditionLevel3()
+    {
+
+        SceneManager.LoadScene(5);
+    }
     public void LoseCondition()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(8);
     }
 }

@@ -12,6 +12,7 @@ public class BulletBehaviour : MonoBehaviour
     void Update()
     {
         BulletMovement();
+        AutoDestroy();
     }
 
     private void BulletMovement()
@@ -19,4 +20,8 @@ public class BulletBehaviour : MonoBehaviour
         transform.Translate(Vector3.right.normalized * bulletSpeed * Time.deltaTime);
     }
 
+    private void AutoDestroy()
+    {
+        Destroy(gameObject, 1.61f);
+    }
 }

@@ -1,22 +1,21 @@
+using System;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
-public class EnemyShipBehaviour : MonoBehaviour
+public class AsteroidBehaviourUp : MonoBehaviour
 {
-    public Animator deadAnimation;
     private ScoreBehaviour enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
-    private SpriteRenderer hide;
-    private SphereCollider sCollider;
     private int enemySpeed = 10;
+    private Vector3 enemyPatroll = new Vector3(0, 0, 0);
+
     void Start()
     {
-        hide = GetComponent<SpriteRenderer>();
-        sCollider = GetComponent<SphereCollider>();
+        enemyPatroll = new Vector3(-1, Mathf.Sin(30f), 0);
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviour>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
-        
     }
     void Update()
     {
@@ -24,11 +23,7 @@ public class EnemyShipBehaviour : MonoBehaviour
     }
     private void EnemyMovement()
     {
-        transform.Translate(Vector3.left.normalized * enemySpeed * Time.deltaTime);
-    }
-    private void AutoDestroy()
-    {
-        Destroy(gameObject);
+        transform.Translate(enemyPatroll.normalized * enemySpeed * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -36,18 +31,25 @@ public class EnemyShipBehaviour : MonoBehaviour
         {
             enemyscore.AddPoints(100);
             Destroy(collision.gameObject);
-            deadAnimation.SetTrigger("dead");
-            hide.enabled = false;
-            sCollider.enabled = false;
-            Invoke("AutoDestroy", 1);
+            Destroy(gameObject);
 
         }
         if (collision.gameObject.CompareTag("Player"))
         {
             playersLife.TakeDamage(100);
-            enemyscore.SubtractPoints(200);
+            enemyscore.SubtractPoints(100);
             lifesUI.SubstractLifes(1);
             Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("WallDown"))
+        {
+            enemyPatroll = new Vector3(-1, Mathf.Sin(30) * -1, 0);
+            transform.Translate(enemyPatroll.normalized * enemySpeed * Time.deltaTime);
+        }
+        if (collision.gameObject.CompareTag("WallUp"))
+        {
+            enemyPatroll = new Vector3(-1, Mathf.Sin(30), 0);
+            transform.Translate(enemyPatroll.normalized * enemySpeed * Time.deltaTime);
         }
     }
 }

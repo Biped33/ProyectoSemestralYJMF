@@ -6,7 +6,7 @@ using UnityEngine;
 public class LifesUIBehaviour : MonoBehaviour
 {
     private TMP_Text numberOfLifes;
-    private int lifesNumber = 3;
+    private int lifesNumber = 5;
     void Start()
     {
         numberOfLifes = GetComponent<TMP_Text>();
