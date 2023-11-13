@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - WallUp
   - WallDown
+  - Mega Asteroid
   layers:
   - Default
   - TransparentFX
