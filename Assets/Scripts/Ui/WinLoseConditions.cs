@@ -19,18 +19,17 @@ public class WinLoseConditions : MonoBehaviour
     }
     public void WinConditionLevel1()
     {
-
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
     public void WinConditionLevel2()
     {
 
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
     }
     public void WinConditionLevel3()
     {
 
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(6);
     }
     public void LoseCondition()
     {

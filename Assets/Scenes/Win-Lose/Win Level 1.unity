@@ -284,7 +284,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 841962601}
         m_TargetAssemblyTypeName: AllButtons, Assembly-CSharp
-        m_MethodName: RetryButtonWinLevel1
+        m_MethodName: Loadlevel2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,10 +1,8 @@
-using System;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class AsteroidBehaviourUp : MonoBehaviour
 {
-    private ScoreBehaviour enemyscore;
+    private ScoreBehaviourLevel1 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
     private int enemySpeed = 10;
@@ -12,9 +10,9 @@ public class AsteroidBehaviourUp : MonoBehaviour
 
     void Start()
     {
-        enemyPatroll = new Vector3(-1, Mathf.Sin(30f), 0);
+        enemyPatroll = new Vector3(-1, Mathf.Sin(-30f), 0);
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
-        enemyscore = FindObjectOfType<ScoreBehaviour>();
+        enemyscore = FindObjectOfType<ScoreBehaviourLevel1>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
     }
     void Update()

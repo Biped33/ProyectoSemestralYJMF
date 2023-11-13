@@ -2,19 +2,21 @@ using UnityEngine;
 
 public class EnemyShipBehaviour : MonoBehaviour
 {
-    public Animator deadAnimation;
-    private ScoreBehaviour enemyscore;
+    //public Animator deadAnimation;
+    private ScoreBehaviourLevel2 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
     private SpriteRenderer hide;
     private SphereCollider sCollider;
+    //private AudioSource audioComponent;
     private int enemySpeed = 10;
     void Start()
     {
+        //audioComponent = GetComponent<AudioSource>();
         hide = GetComponent<SpriteRenderer>();
         sCollider = GetComponent<SphereCollider>();
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
-        enemyscore = FindObjectOfType<ScoreBehaviour>();
+        enemyscore = FindObjectOfType<ScoreBehaviourLevel2>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
         
     }
@@ -34,9 +36,10 @@ public class EnemyShipBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullets"))
         {
-            enemyscore.AddPoints(100);
+            enemyscore.AddPoints(150);
             Destroy(collision.gameObject);
-            deadAnimation.SetTrigger("dead");
+            //audioComponent.Play();
+            //deadAnimation.SetTrigger("dead");
             hide.enabled = false;
             sCollider.enabled = false;
             Invoke("AutoDestroy", 1);
@@ -44,9 +47,9 @@ public class EnemyShipBehaviour : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            playersLife.TakeDamage(100);
-            enemyscore.SubtractPoints(200);
-            lifesUI.SubstractLifes(1);
+            playersLife.TakeDamage(200);
+            enemyscore.SubtractPoints(350);
+            lifesUI.SubstractLifes(2);
             Destroy(gameObject);
         }
     }

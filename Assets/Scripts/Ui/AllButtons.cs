@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class AllButtons : MonoBehaviour
 {
-
     public void PlayButton()
     {
         SceneManager.LoadScene(1);
@@ -30,7 +29,7 @@ public class AllButtons : MonoBehaviour
     }
     public void HowToPlay()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(9);
     }
     public void ExitButton()
     {

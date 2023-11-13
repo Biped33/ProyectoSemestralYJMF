@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    public int bulletSpeed = 10;
+    private int bulletSpeed = 25;
     void Start()
     {
     }
@@ -22,6 +22,6 @@ public class BulletBehaviour : MonoBehaviour
 
     private void AutoDestroy()
     {
-        Destroy(gameObject, 1.61f);
+        Destroy(gameObject, 1f);
     }
 }

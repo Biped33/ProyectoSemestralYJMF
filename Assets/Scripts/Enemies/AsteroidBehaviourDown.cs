@@ -1,20 +1,23 @@
-using System;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class AsteroidBehaviourDown : MonoBehaviour
 {
-    private ScoreBehaviour enemyscore;
+    private ScoreBehaviourLevel1 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
+    private SpriteRenderer hide;
+    private SphereCollider sCollider;
+    //public Animator deadAnimation;
     private int enemySpeed = 10;
     private Vector3 enemyPatroll = new Vector3(0, 0, 0);
 
     void Start()
     {
-        enemyPatroll = new Vector3(-1, Mathf.Cos(90f), 0);
+        enemyPatroll = new Vector3(-1, Mathf.Cos(180f), 0);
+        hide = GetComponent<SpriteRenderer>();
+        sCollider = GetComponent<SphereCollider>();
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
-        enemyscore = FindObjectOfType<ScoreBehaviour>();
+        enemyscore = FindObjectOfType<ScoreBehaviourLevel1>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
     }
     void Update()
@@ -25,13 +28,20 @@ public class AsteroidBehaviourDown : MonoBehaviour
     {
         transform.Translate(enemyPatroll.normalized * enemySpeed * Time.deltaTime);
     }
+    private void AutoDestroy()
+    {
+        Destroy(gameObject);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullets"))
         {
             enemyscore.AddPoints(100);
             Destroy(collision.gameObject);
-            Destroy(gameObject);
+            //deadAnimation.SetTrigger("dead");
+            hide.enabled = false;
+            sCollider.enabled = false;
+            Invoke("AutoDestroy", 1f);
 
         }
         if (collision.gameObject.CompareTag("Player"))

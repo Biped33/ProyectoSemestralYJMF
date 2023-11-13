@@ -23,7 +23,6 @@ public class PlayerBehaviour : MonoBehaviour
             spriteShip.sprite = upShip;
             transform.Translate(Vector3.up.normalized * playerSpeed * Time.deltaTime);
         }
-
         if (Input.GetKey(KeyCode.S))
         {
             spriteShip.sprite = downShip;
