@@ -17,7 +17,7 @@ public class AllButtons : MonoBehaviour
     }
     public void LoadFinalScene()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(7);
     }
     public void RetryButtonLose()
     {

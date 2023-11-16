@@ -32,7 +32,6 @@ public class ScoreBehaviour : MonoBehaviour
                     WinLoseConditions.instance.WinConditionLevel1();
                 }
             }
-
         }
     }
     public void SubtractPoints(int value)

@@ -37,7 +37,7 @@ public class MegaAsteroidBehaviour : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void TakeDamage(int bulletDamage)
+    private void TakeDamage(int bulletDamage)
     {
         asteroidLife -= bulletDamage;
 

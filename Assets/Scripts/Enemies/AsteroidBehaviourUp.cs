@@ -49,5 +49,9 @@ public class AsteroidBehaviourUp : MonoBehaviour
             enemyPatroll = new Vector3(-1, Mathf.Sin(30), 0);
             transform.Translate(enemyPatroll.normalized * enemySpeed * Time.deltaTime);
         }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

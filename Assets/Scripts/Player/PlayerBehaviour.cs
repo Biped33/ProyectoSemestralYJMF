@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    private int playerSpeed = 5;
+    private int playerSpeed = 10;
     private int life = 500;
     private SpriteRenderer spriteShip;
     public Sprite upShip, normalShip, downShip;
@@ -17,7 +18,6 @@ public class PlayerBehaviour : MonoBehaviour
     private void PlayerMovement(Transform transform, int playerSpeed)
     {
         spriteShip.sprite = normalShip;
-
         if (Input.GetKey(KeyCode.W))
         {
             spriteShip.sprite = upShip;
@@ -27,6 +27,14 @@ public class PlayerBehaviour : MonoBehaviour
         {
             spriteShip.sprite = downShip;
             transform.Translate(Vector3.down.normalized * playerSpeed * Time.deltaTime);
+        }
+        if(Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right.normalized * playerSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector3.left.normalized * playerSpeed * Time.deltaTime);
         }
     }
     public void TakeDamage(int enemyDamage)
