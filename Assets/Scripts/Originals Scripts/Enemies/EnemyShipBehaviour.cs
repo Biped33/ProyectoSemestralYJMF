@@ -19,8 +19,6 @@ public class EnemyShipBehaviour : MonoBehaviour
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviourLevel2>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
-
-
     }
     void Update()
     {
@@ -35,7 +33,6 @@ public class EnemyShipBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
     private void TakeDamage(int damage)
     {
         lifeEnemyShip -= damage;
@@ -62,6 +59,10 @@ public class EnemyShipBehaviour : MonoBehaviour
             playersLife.TakeDamage(200);
             enemyscore.SubtractPoints(350);
             lifesUI.SubstractLifes(2);
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
             Destroy(gameObject);
         }
     }

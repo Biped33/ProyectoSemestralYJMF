@@ -6,24 +6,23 @@ public class BulletSpawn : MonoBehaviour
 {
     public GameObject bullet;
     private AudioSource audioComponent;
-    private float shootRecharge = 1f;
+    public float shootDelay = 1f;
     void Start()
     {
         audioComponent = GetComponent<AudioSource>();
     }
     void Update()
     {
-        SpawnBullet();
+        ShootDelay();
     }
-    private void SpawnBullet()
+    private void ShootDelay()
     {
-        shootRecharge-= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space) && shootRecharge <= 0) 
+        shootDelay -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space) && shootDelay <= 0) 
         {
             audioComponent.Play();
             Instantiate(bullet, transform.position, Quaternion.identity);
-            shootRecharge = 0.3f;
+            shootDelay = 0.2f;
         }
-
     }
 }

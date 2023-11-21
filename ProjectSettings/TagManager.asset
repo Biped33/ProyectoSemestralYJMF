@@ -12,6 +12,8 @@ TagManager:
   - WallUp
   - WallDown
   - Mega Asteroid
+  - Speed
+  - Life
   layers:
   - Default
   - TransparentFX

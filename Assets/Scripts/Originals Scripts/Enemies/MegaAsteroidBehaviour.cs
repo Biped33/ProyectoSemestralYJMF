@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class MegaAsteroidBehaviour : MonoBehaviour
 {
-
     //public Animator deadAnimation;
     private ScoreBehaviourLevel3 enemyscore;
     private PlayerBehaviour playersLife;
@@ -14,6 +14,7 @@ public class MegaAsteroidBehaviour : MonoBehaviour
     //private AudioSource audioComponent;
     private int enemySpeed = 2;
     private int asteroidLife = 700;
+    public GameObject miniAsteroids;
     void Start()
     {
         //audioComponent = GetComponent<AudioSource>();
@@ -56,6 +57,7 @@ public class MegaAsteroidBehaviour : MonoBehaviour
                 //deadAnimation.SetTrigger("dead");
                 hide.enabled = false;
                 sCollider.enabled = false;
+                Instantiate(miniAsteroids);
                 Invoke("AutoDestroy", 1);
             }
         }
@@ -64,6 +66,10 @@ public class MegaAsteroidBehaviour : MonoBehaviour
             playersLife.TakeDamage(300);
             enemyscore.SubtractPoints(450);
             lifesUI.SubstractLifes(3);
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
             Destroy(gameObject);
         }
     }
