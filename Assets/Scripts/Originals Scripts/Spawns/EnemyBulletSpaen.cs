@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawn : MonoBehaviour
+public class EnemyBulletSpaen : MonoBehaviour
 {
     public GameObject bullet;
     private AudioSource audioComponent;
-    public float shootDelay = 1f;
+    private float shootDelay = 1f;
     void Start()
     {
         audioComponent = GetComponent<AudioSource>();
@@ -18,11 +18,11 @@ public class BulletSpawn : MonoBehaviour
     private void ShootDelay()
     {
         shootDelay -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space) && shootDelay <= 0) 
+        if (Input.GetKeyDown(KeyCode.Space) && shootDelay <= 0)
         {
-            audioComponent.Play();
+            //audioComponent.Play();
             Instantiate(bullet, transform.position, Quaternion.identity);
-            shootDelay = 0.18f;
+            shootDelay = 3f;
         }
     }
 }

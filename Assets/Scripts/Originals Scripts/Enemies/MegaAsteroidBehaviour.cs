@@ -14,7 +14,8 @@ public class MegaAsteroidBehaviour : MonoBehaviour
     //private AudioSource audioComponent;
     private int enemySpeed = 2;
     private int asteroidLife = 700;
-    public GameObject miniAsteroids;
+    private int asteroidsNumber = 3;
+    public GameObject[] miniAsteroids;
     void Start()
     {
         //audioComponent = GetComponent<AudioSource>();
@@ -57,7 +58,10 @@ public class MegaAsteroidBehaviour : MonoBehaviour
                 //deadAnimation.SetTrigger("dead");
                 hide.enabled = false;
                 sCollider.enabled = false;
-                Instantiate(miniAsteroids);
+                for (var i = 0; i < asteroidsNumber; i++)
+                {
+                    Instantiate(miniAsteroids[Random.Range(0,miniAsteroids.Length)],transform.position,Quaternion.identity);
+                }
                 Invoke("AutoDestroy", 1);
             }
         }

@@ -1,15 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-public class EnemyShipBehaviour : MonoBehaviour
+public class EnemyShipShootingBehaviour : MonoBehaviour
 {
     //public Animator deadAnimation;
     private ScoreBehaviourLevel2 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
     private SpriteRenderer hide;
-    private SphereCollider sCollider;
+    private BoxCollider bCollider;
     private int lifeEnemyShip = 200;
     private int enemySpeed = 13;
+    private float shootDelay = 3;
+    public GameObject bullet;
     //private AudioSource audioComponent;
     void Start()
     {
@@ -19,12 +24,13 @@ public class EnemyShipBehaviour : MonoBehaviour
     void Update()
     {
         EnemyMovement();
+        Shoot();
     }
 
     private void FindObjects()
     {
         hide = GetComponent<SpriteRenderer>();
-        sCollider = GetComponent<SphereCollider>();
+        bCollider = GetComponent<BoxCollider>();
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviourLevel2>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
@@ -41,6 +47,14 @@ public class EnemyShipBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    private void Shoot()
+    {
+        if (shootDelay <= 0)
+        {
+            Instantiate(bullet, transform.position, Quaternion.identity);
+            shootDelay = 3;
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullets"))
@@ -54,7 +68,7 @@ public class EnemyShipBehaviour : MonoBehaviour
                 //audioComponent.Play();
                 //deadAnimation.SetTrigger("dead");
                 hide.enabled = false;
-                sCollider.enabled = false;
+                bCollider.enabled = false;
                 Invoke("AutoDestroy", 1);
             }
         }
