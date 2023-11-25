@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4979838814323946000, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_Name
-      value: Wall Up (2)
+      value: Fire Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946000, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_TagString
@@ -987,7 +987,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4979838814323946000, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_Name
-      value: Wall Up (1)
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946000, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_TagString
@@ -1796,6 +1796,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 955521145922459825, guid: 168b92d4c82b220469014ebcf648ac1e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1706
+      objectReference: {fileID: 0}
     - target: {fileID: 955521145952886320, guid: 168b92d4c82b220469014ebcf648ac1e, type: 3}
       propertyPath: m_Constraints
       value: 120

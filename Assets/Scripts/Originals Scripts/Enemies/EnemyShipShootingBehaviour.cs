@@ -15,11 +15,10 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
     private int enemySpeed = 13;
     private float shootDelay = 3;
     public GameObject bullet;
-    //private AudioSource audioComponent;
+    private AudioSource audioComponent;
     void Start()
     {
         FindObjects();
-        //audioComponent = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -34,6 +33,7 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviourLevel2>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
+        audioComponent = GetComponent<AudioSource>();
     }
     private void EnemyMovement()
     {
@@ -49,8 +49,9 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
     }
     private void Shoot()
     {
-        if (shootDelay <= 0)
+        if (shootDelay <= 0 && lifeEnemyShip >= 200)
         {
+            audioComponent.Play();
             Instantiate(bullet, transform.position, Quaternion.identity);
             shootDelay = 3;
         }
@@ -65,7 +66,6 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
             {
                 enemyscore.AddPoints(150);
                 Destroy(collision.gameObject);
-                //audioComponent.Play();
                 //deadAnimation.SetTrigger("dead");
                 hide.enabled = false;
                 bCollider.enabled = false;

@@ -1166,6 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1: {fileID: 2674976234929911921, guid: 7be7f71f9a0d6644f8f814cdc0e9b3f2, type: 3}
+  enemy2: {fileID: 1957243198831799052, guid: d8e1087739cf17a42a50888535972cca, type: 3}
 --- !u!1001 &1441730113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1175,11 +1176,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4979838814323946000, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_Name
-      value: Wall (1)
+      value: Fire Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946000, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_TagString
-      value: Bullet Wall
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4979838814323946012, guid: 156277a04ce4064469439b955c59dc9c, type: 3}
       propertyPath: m_RootOrder
@@ -1443,6 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1: {fileID: 1957243198831799052, guid: d8e1087739cf17a42a50888535972cca, type: 3}
+  enemy2: {fileID: 2674976234929911921, guid: 7be7f71f9a0d6644f8f814cdc0e9b3f2, type: 3}
 --- !u!1 &1630249062
 GameObject:
   m_ObjectHideFlags: 0
