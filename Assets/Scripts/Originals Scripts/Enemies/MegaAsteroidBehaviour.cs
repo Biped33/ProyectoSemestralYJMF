@@ -1,24 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-
 public class MegaAsteroidBehaviour : MonoBehaviour
 {
-    //public Animator deadAnimation;
     private ScoreBehaviourLevel3 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
     private SpriteRenderer hide;
     private SphereCollider sCollider;
-    //private AudioSource audioComponent;
+    private AudioSource audioComponent;
     private int enemySpeed = 2;
     private int asteroidLife = 700;
-    private int asteroidsNumber = 3;
+    private int numberOfAsteroids = 3;
     public GameObject[] miniAsteroids;
+    public GameObject deadAnimation;
     void Start()
     {
-        //audioComponent = GetComponent<AudioSource>();
+        audioComponent = GetComponent<AudioSource>();
         hide = GetComponent<SpriteRenderer>();
         sCollider = GetComponent<SphereCollider>();
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
@@ -38,7 +34,6 @@ public class MegaAsteroidBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
     private void TakeDamage(int bulletDamage)
     {
         asteroidLife -= bulletDamage;
@@ -54,13 +49,13 @@ public class MegaAsteroidBehaviour : MonoBehaviour
             {
                 enemyscore.AddPoints(500);
                 Destroy(collision.gameObject);
-                //audioComponent.Play();
-                //deadAnimation.SetTrigger("dead");
+                Instantiate(deadAnimation,transform.position, Quaternion.identity); 
+                audioComponent.Play();
                 hide.enabled = false;
                 sCollider.enabled = false;
-                for (var i = 0; i < asteroidsNumber; i++)
+                for (var i = 0; i < numberOfAsteroids; i++)
                 {
-                    Instantiate(miniAsteroids[Random.Range(0,miniAsteroids.Length)],transform.position,Quaternion.identity);
+                    Instantiate(miniAsteroids[Random.Range(0, miniAsteroids.Length)], transform.position, Quaternion.identity);
                 }
                 Invoke("AutoDestroy", 1);
             }
@@ -78,4 +73,3 @@ public class MegaAsteroidBehaviour : MonoBehaviour
         }
     }
 }
-

@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class EnemyShipShootingBehaviour : MonoBehaviour
 {
-    //public Animator deadAnimation;
+
     private ScoreBehaviourLevel2 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
     private SpriteRenderer hide;
-    private BoxCollider bCollider;
-    private int lifeEnemyShip = 200;
-    private int enemySpeed = 13;
-    private float shootDelay = 3;
-    public GameObject bullet;
-    private AudioSource audioComponent;
+    private SphereCollider sCollider;
+    public GameObject bullet, deadAnimation;
+    public AudioSource audioComponentShoot, dead;
+    private int lifeEnemyShip = 500;
+    private int enemySpeed = 5;
+    private float shootDelay = 1f;
     void Start()
     {
         FindObjects();
@@ -29,11 +29,10 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
     private void FindObjects()
     {
         hide = GetComponent<SpriteRenderer>();
-        bCollider = GetComponent<BoxCollider>();
+        sCollider = GetComponent<SphereCollider>();
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviourLevel2>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
-        audioComponent = GetComponent<AudioSource>();
     }
     private void EnemyMovement()
     {
@@ -49,11 +48,13 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
     }
     private void Shoot()
     {
-        if (shootDelay <= 0 && lifeEnemyShip >= 200)
+        shootDelay -= Time.deltaTime;
+        if (shootDelay <= 0 && lifeEnemyShip > 0)
         {
-            audioComponent.Play();
-            Instantiate(bullet, transform.position, Quaternion.identity);
-            shootDelay = 3;
+            audioComponentShoot.Play();
+          
+            Instantiate(bullet, transform.position, Quaternion.Euler(180,0,-180));
+            shootDelay = 1.5f;
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -64,24 +65,31 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
             Destroy(collision.gameObject);
             if (lifeEnemyShip <= 0)
             {
-                enemyscore.AddPoints(150);
+                enemyscore.AddPoints(200);
                 Destroy(collision.gameObject);
-                //deadAnimation.SetTrigger("dead");
+                Instantiate(deadAnimation, transform.position, Quaternion.identity);
+                dead.Play();
                 hide.enabled = false;
-                bCollider.enabled = false;
+                sCollider.enabled = false;
                 Invoke("AutoDestroy", 1);
             }
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            playersLife.TakeDamage(200);
+            playersLife.TakeDamage(300);
             enemyscore.SubtractPoints(350);
-            lifesUI.SubstractLifes(2);
-            Destroy(gameObject);
+            lifesUI.SubstractLifes(3);
+            dead.Play();
+            hide.enabled = false;
+            sCollider.enabled = false;
+            Invoke("AutoDestroy", 1);
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            hide.enabled = false;
+            sCollider.enabled = false;
+            Invoke("AutoDestroy", 1);
+            audioComponentShoot.enabled = false;
         }
     }
 }

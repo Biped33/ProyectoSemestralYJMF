@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnShipsLevel2 : MonoBehaviour
+{
+    public GameObject enemy1;
+    private float randomX;
+    private float randomY;
+    private float time = 1f;
+    void Start()
+    {
+    }
+    void Update()
+    {
+        SpawnEnemy1();
+    }
+    private void SpawnEnemy1()
+    {
+
+        time -= Time.deltaTime;
+        if (time <= 0)
+        {
+            randomX = Random.Range(16, 18);
+            randomY = Random.Range(8, -8);
+            Vector3 enemySpawn = new Vector3(randomX, randomY, 0);
+            Instantiate(enemy1, enemySpawn, transform.rotation);
+            time = 10f;
+        }
+    }
+}

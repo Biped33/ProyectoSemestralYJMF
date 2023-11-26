@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 public class ScoreBehaviourLevel3 : MonoBehaviour
@@ -21,7 +19,7 @@ public class ScoreBehaviourLevel3 : MonoBehaviour
     public void AddPoints(int value)
     {
         score += value;
-        if (score >= 6000)
+        if (score >= 8000)
         {
             WinLoseConditions.instance.WinConditionLevel3();
         }

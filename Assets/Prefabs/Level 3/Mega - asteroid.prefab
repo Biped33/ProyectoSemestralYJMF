@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1803434789532684599}
   - component: {fileID: 1453563833493615872}
   - component: {fileID: 3449395485595764203}
+  - component: {fileID: 3688093175897581514}
   m_Layer: 0
   m_Name: Mega - asteroid
   m_TagString: Mega Asteroid
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1803434789532684594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.03, y: 0, z: 0}
-  m_LocalScale: {x: 10.148, y: 10.148, z: 10.148}
+  m_LocalScale: {x: 22, y: 14, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,9 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miniAsteroids:
-  - {fileID: 32749261795881229, guid: ae2eb0b219e5b0a44a55a69b01751e37, type: 3}
-  - {fileID: 6385307283077775355, guid: 859b65bab7aa00a4faa7f196564951ed, type: 3}
-  - {fileID: 32749261795881229, guid: ae2eb0b219e5b0a44a55a69b01751e37, type: 3}
+  - {fileID: 8544322188094795956, guid: 7d41012b68779334db71c13556ba791d, type: 3}
+  - {fileID: 6411797932063236187, guid: 9eb22edcabc76a645a6762aafa7fab54, type: 3}
+  - {fileID: 7566804374463525117, guid: e1c374ac5ee508647a5e22b9d0dc28fd, type: 3}
+  deadAnimation: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97, type: 3}
 --- !u!54 &1453563833493615872
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,7 +119,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!135 &3449395485595764203
 SphereCollider:
@@ -132,3 +134,99 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.17760952
   m_Center: {x: 0.007390483, y: 0, z: 0}
+--- !u!82 &3688093175897581514
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803434789532684594}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: eeac7ff7e4ad44587b11429a7e7b8fc1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

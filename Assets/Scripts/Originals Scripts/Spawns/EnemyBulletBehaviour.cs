@@ -7,7 +7,7 @@ public class EnemyBulletBehaviour : MonoBehaviour
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
     private ScoreBehaviourLevel2 enemyscore;
-    private int bulletSpeed = 20;
+    private int bulletSpeed = 12;
     void Start()
     {
         FindObjects();
@@ -24,7 +24,7 @@ public class EnemyBulletBehaviour : MonoBehaviour
     }
     private void BulletMovement()
     {
-        transform.Translate(Vector3.left.normalized * bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right.normalized * bulletSpeed * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -5,13 +5,11 @@ using UnityEngine;
 public class PowerUoSpawn : MonoBehaviour
 {
     public GameObject speedPoweUP, extraLifePowerUp;
-    private float randomX, randomY, timer = 30f;
+    private float randomX, randomY, timer1 = 5f, timer2 = 15f;
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
+    }
     void Update()
     {
         SpawnLife();
@@ -20,27 +18,27 @@ public class PowerUoSpawn : MonoBehaviour
 
     private void SpawnSpeed()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        timer1 -= Time.deltaTime;
+        if (timer1 <= 0)
         {
-            randomX = Random.Range(0,10); 
-            randomY = Random.Range(3,-5);
+            randomX = Random.Range(16, 18);
+            randomY = Random.Range(8, -8);
             Vector3 position = new Vector3(randomX, randomY, 0);
-            Instantiate(speedPoweUP, position, transform.rotation);
-            timer = 25f;
+            Instantiate(speedPoweUP, position, Quaternion.Euler(0,0,-180));
+            timer1 = 15f;
         }
     }
 
     private void SpawnLife()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        timer2 -= Time.deltaTime;
+        if (timer2 <= 0)
         {
-            randomX = Random.Range(0, 10);
-            randomY = Random.Range(3, -3);
+            randomX = Random.Range(16, 18);
+            randomY = Random.Range(8, -8);
             Vector3 position = new Vector3(randomX, randomY, 0);
             Instantiate(extraLifePowerUp, position, transform.rotation);
-            timer = 35f;
+            timer2 = 30f;
         }
     }
 }

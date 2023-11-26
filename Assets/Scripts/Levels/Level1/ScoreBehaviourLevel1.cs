@@ -21,7 +21,7 @@ public class ScoreBehaviourLevel1 : MonoBehaviour
     public void AddPoints(int value)
     {
         score += value;
-        if (score >= 2500)
+        if (score >= 3000)
         {
             WinLoseConditions.instance.WinConditionLevel1();
         }

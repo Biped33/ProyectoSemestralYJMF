@@ -31,8 +31,8 @@ public class ExtraLifePowerUp : MonoBehaviour
     }
     private Vector3 Path(float t)
     {
-        float x = r * Mathf.Sin(speed * t);
-        float y = r * Mathf.Sin(speed * t) * Mathf.Cos(speed * t);
+        float x = -speed * t;
+        float y = r * Mathf.Cos(speed * t) * Mathf.Sin(speed * t);
         float z = 0;
         Vector3 result = new Vector3(x, y, z);
         return result + position;

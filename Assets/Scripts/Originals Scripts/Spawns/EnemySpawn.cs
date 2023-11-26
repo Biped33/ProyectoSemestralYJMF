@@ -22,10 +22,10 @@ public class EnemySpawn : MonoBehaviour
         if (time <= 0)
         {
             randomX = Random.Range(16, 18);
-            randomY = Random.Range(3, -8);
+            randomY = Random.Range(8, -8);
             Vector3 enemySpawn = new Vector3(randomX, randomY, 0);
             Instantiate(enemy1, enemySpawn, transform.rotation);
-            time = 1f;
+            time = 1.5f;
         }
     }   private void SpawnEnemy2()
     {
@@ -37,7 +37,7 @@ public class EnemySpawn : MonoBehaviour
             randomY = Random.Range(3, -8);
             Vector3 enemySpawn = new Vector3(randomX, randomY, 0);
             Instantiate(enemy2, enemySpawn, Quaternion.identity);
-            time = 2f;
+            time = 1.5f;
         }
     }
 }

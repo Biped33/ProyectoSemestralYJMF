@@ -5,23 +5,38 @@ public class AsteroidBehaviourUp : MonoBehaviour
     private ScoreBehaviourLevel1 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
-    private int enemySpeed = 10;
-    private Vector3 enemyPatroll = new Vector3(0, 0, 0);
+    private SpriteRenderer hide;
+    private SphereCollider sCollider;
+    public GameObject deadAnimation;
+    private AudioSource explotion;
+    private int enemySpeed = 8;
+    private Vector3 enemyPatroll = new Vector3(-1, Mathf.Sin(-30f), 0);
 
     void Start()
     {
-        enemyPatroll = new Vector3(-1, Mathf.Sin(-30f), 0);
-        lifesUI = FindObjectOfType<LifesUIBehaviour>();
-        enemyscore = FindObjectOfType<ScoreBehaviourLevel1>();
-        playersLife = FindObjectOfType<PlayerBehaviour>();
+
+        FindObjects();
     }
     void Update()
     {
         EnemyMovement();
     }
+    private void FindObjects()
+    {
+        hide = GetComponent<SpriteRenderer>();
+        sCollider = GetComponent<SphereCollider>();
+        explotion = GetComponent<AudioSource>();
+        lifesUI = FindObjectOfType<LifesUIBehaviour>();
+        enemyscore = FindObjectOfType<ScoreBehaviourLevel1>();
+        playersLife = FindObjectOfType<PlayerBehaviour>();
+    }
     private void EnemyMovement()
     {
         transform.Translate(enemyPatroll.normalized * enemySpeed * Time.deltaTime);
+    }
+    private void AutoDestroy()
+    {
+        Destroy(gameObject);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -29,15 +44,22 @@ public class AsteroidBehaviourUp : MonoBehaviour
         {
             enemyscore.AddPoints(100);
             Destroy(collision.gameObject);
-            Destroy(gameObject);
-
+            Instantiate(deadAnimation, transform.position, Quaternion.identity);
+            explotion.Play();
+            hide.enabled = false;
+            sCollider.enabled = false;
+            Invoke("AutoDestroy", 1f);
         }
         if (collision.gameObject.CompareTag("Player"))
         {
             playersLife.TakeDamage(100);
             enemyscore.SubtractPoints(100);
             lifesUI.SubstractLifes(1);
-            Destroy(gameObject);
+            Instantiate(deadAnimation, transform.position, Quaternion.identity);
+            explotion.Play();
+            hide.enabled = false;
+            sCollider.enabled = false;
+            Invoke("AutoDestroy", 1f);
         }
         if (collision.gameObject.CompareTag("WallDown"))
         {
@@ -51,7 +73,9 @@ public class AsteroidBehaviourUp : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            hide.enabled = false;
+            sCollider.enabled = false;
+            Invoke("AutoDestroy", 1f);
         }
     }
 }

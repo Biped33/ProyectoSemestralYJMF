@@ -2,19 +2,18 @@ using UnityEngine;
 
 public class EnemyShipBehaviour : MonoBehaviour
 {
-    //public Animator deadAnimation;
+    public GameObject deadAnimation;
     private ScoreBehaviourLevel2 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
     private SpriteRenderer hide;
     private SphereCollider sCollider;
-    private int lifeEnemyShip = 200;
-    private int enemySpeed = 13;
-    //private AudioSource audioComponent;
+    private int lifeEnemyShip = 100;
+    private int enemySpeed = 20;
+    private AudioSource audioComponent;
     void Start()
     {
         FindObjects();
-        //audioComponent = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -23,6 +22,7 @@ public class EnemyShipBehaviour : MonoBehaviour
 
     private void FindObjects()
     {
+        audioComponent = GetComponent<AudioSource>();
         hide = GetComponent<SpriteRenderer>();
         sCollider = GetComponent<SphereCollider>();
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
@@ -51,8 +51,8 @@ public class EnemyShipBehaviour : MonoBehaviour
             {
                 enemyscore.AddPoints(150);
                 Destroy(collision.gameObject);
-                //audioComponent.Play();
-                //deadAnimation.SetTrigger("dead");
+                Instantiate(deadAnimation, transform.position, Quaternion.identity);
+                audioComponent.Play();
                 hide.enabled = false;
                 sCollider.enabled = false;
                 Invoke("AutoDestroy", 1);
@@ -60,14 +60,20 @@ public class EnemyShipBehaviour : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            playersLife.TakeDamage(200);
+            playersLife.TakeDamage(100);
             enemyscore.SubtractPoints(350);
-            lifesUI.SubstractLifes(2);
-            Destroy(gameObject);
+            lifesUI.SubstractLifes(1);
+            Instantiate(deadAnimation, transform.position, Quaternion.identity);
+            audioComponent.Play();
+            hide.enabled = false;
+            sCollider.enabled = false;
+            Invoke("AutoDestroy", 1);
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            hide.enabled = false;
+            sCollider.enabled = false;
+            Invoke("AutoDestroy", 1);
         }
     }
 }
