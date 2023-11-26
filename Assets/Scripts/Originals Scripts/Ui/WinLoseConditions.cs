@@ -21,7 +21,6 @@ public class WinLoseConditions : MonoBehaviour
     }
     public void WinConditionLevel2()
     {
-
         SceneManager.LoadScene(5);
     }
     public void WinConditionLevel3()
