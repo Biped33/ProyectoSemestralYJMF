@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EnemyShipShootingBehaviour : MonoBehaviour
-{
-
+{ 
     private ScoreBehaviourLevel2 enemyscore;
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
@@ -16,10 +12,12 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
     private int lifeEnemyShip = 500;
     private int enemySpeed = 5;
     private float shootDelay = 1f;
+
     void Start()
     {
         FindObjects();
     }
+
     void Update()
     {
         EnemyMovement();
@@ -34,29 +32,34 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
         enemyscore = FindObjectOfType<ScoreBehaviourLevel2>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
     }
+
     private void EnemyMovement()
     {
         transform.Translate(Vector3.left.normalized * enemySpeed * Time.deltaTime);
     }
+
     private void TakeDamage(int damage)
     {
         lifeEnemyShip -= damage;
     }
+
     private void AutoDestroy()
     {
         Destroy(gameObject);
     }
+
     private void Shoot()
     {
         shootDelay -= Time.deltaTime;
         if (shootDelay <= 0 && lifeEnemyShip > 0)
         {
+            Vector3 extraPosition = new Vector3(-2.5f, 0, 0);
             audioComponentShoot.Play();
-          
-            Instantiate(bullet, transform.position, Quaternion.Euler(180,0,-180));
+            Instantiate(bullet, transform.position + extraPosition, Quaternion.Euler(180,0,-180));
             shootDelay = 1.5f;
         }
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullets"))

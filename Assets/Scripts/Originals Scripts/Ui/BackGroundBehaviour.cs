@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BackGroundBehaviour : MonoBehaviour
@@ -10,11 +8,17 @@ public class BackGroundBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        material = GetComponent<SpriteRenderer>().material;
+        FindObjects();
     }
+
     void Update()
     {
         offset = movementVelocityBG * Time.deltaTime;
         material.mainTextureOffset += offset;
+    }
+
+    private void FindObjects()
+    {
+        material = GetComponent<SpriteRenderer>().material;
     }
 }

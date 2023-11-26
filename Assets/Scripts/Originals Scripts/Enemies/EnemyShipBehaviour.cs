@@ -11,6 +11,7 @@ public class EnemyShipBehaviour : MonoBehaviour
     private int lifeEnemyShip = 100;
     private int enemySpeed = 20;
     private AudioSource audioComponent;
+
     void Start()
     {
         FindObjects();
@@ -29,18 +30,22 @@ public class EnemyShipBehaviour : MonoBehaviour
         enemyscore = FindObjectOfType<ScoreBehaviourLevel2>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
     }
+
     private void EnemyMovement()
     {
         transform.Translate(Vector3.left.normalized * enemySpeed * Time.deltaTime);
     }
+
     private void TakeDamage(int damage)
     {
         lifeEnemyShip -= damage;
     }
+
     private void AutoDestroy()
     {
         Destroy(gameObject);
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullets"))

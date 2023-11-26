@@ -6,7 +6,7 @@ public class ScoreBehaviourLevel3 : MonoBehaviour
     private int score = 0;
     void Start()
     {
-        enemyscore = GetComponent<TMP_Text>();
+        FindObjects();
     }
     void Update()
     {
@@ -27,5 +27,10 @@ public class ScoreBehaviourLevel3 : MonoBehaviour
     public void SubtractPoints(int value)
     {
         score -= value;
+    }
+
+    private void FindObjects()
+    {
+        enemyscore = GetComponent<TMP_Text>();
     }
 }

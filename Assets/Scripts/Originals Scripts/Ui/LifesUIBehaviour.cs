@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class LifesUIBehaviour : MonoBehaviour
 {
     private TMP_Text numberOfLifes;
-    private int lifesNumber = 5;
+    private int lifesNumber = 3;
     void Start()
     {
-        numberOfLifes = GetComponent<TMP_Text>();
+        FindObjects();
     }
     void Update()
     {
@@ -26,5 +24,10 @@ public class LifesUIBehaviour : MonoBehaviour
     public void SubstractLifes(int value)
     {
         lifesNumber -= value;
+    }
+
+    private void FindObjects()
+    {
+        numberOfLifes = GetComponent<TMP_Text>();
     }
 }

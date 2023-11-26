@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 public class ScoreBehaviourLevel2 : MonoBehaviour
@@ -8,7 +6,7 @@ public class ScoreBehaviourLevel2 : MonoBehaviour
     private int score = 0;
     void Start()
     {
-        enemyscore = GetComponent<TMP_Text>();
+       FindObjects();
     }
     void Update()
     {
@@ -32,4 +30,8 @@ public class ScoreBehaviourLevel2 : MonoBehaviour
 
     }
 
+    private void FindObjects()
+    {
+        enemyscore = GetComponent<TMP_Text>();
+    }
 }

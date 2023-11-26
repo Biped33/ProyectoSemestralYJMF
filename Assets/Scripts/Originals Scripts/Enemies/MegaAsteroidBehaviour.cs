@@ -7,12 +7,38 @@ public class MegaAsteroidBehaviour : MonoBehaviour
     private SpriteRenderer hide;
     private SphereCollider sCollider;
     private AudioSource audioComponent;
-    private int enemySpeed = 2;
+    private int enemySpeed = 5;
     private int asteroidLife = 700;
     private int numberOfAsteroids = 3;
     public GameObject[] miniAsteroids;
     public GameObject deadAnimation;
+
     void Start()
+    {
+        FindObjects();
+    }
+
+    void Update()
+    {
+        EnemyMovement();
+    }
+
+    private void EnemyMovement()
+    {
+        transform.Translate(Vector3.left.normalized * enemySpeed * Time.deltaTime);
+    }
+
+    private void AutoDestroy()
+    {
+        Destroy(gameObject);
+    }
+
+    private void TakeDamage(int bulletDamage)
+    {
+        asteroidLife -= bulletDamage;
+    }
+
+    private void FindObjects()
     {
         audioComponent = GetComponent<AudioSource>();
         hide = GetComponent<SpriteRenderer>();
@@ -20,24 +46,6 @@ public class MegaAsteroidBehaviour : MonoBehaviour
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviourLevel3>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
-
-    }
-    void Update()
-    {
-        EnemyMovement();
-    }
-    private void EnemyMovement()
-    {
-        transform.Translate(Vector3.left.normalized * enemySpeed * Time.deltaTime);
-    }
-    private void AutoDestroy()
-    {
-        Destroy(gameObject);
-    }
-    private void TakeDamage(int bulletDamage)
-    {
-        asteroidLife -= bulletDamage;
-
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -49,7 +57,7 @@ public class MegaAsteroidBehaviour : MonoBehaviour
             {
                 enemyscore.AddPoints(500);
                 Destroy(collision.gameObject);
-                Instantiate(deadAnimation,transform.position, Quaternion.identity); 
+                Instantiate(deadAnimation, transform.position, Quaternion.identity);
                 audioComponent.Play();
                 hide.enabled = false;
                 sCollider.enabled = false;
@@ -65,7 +73,15 @@ public class MegaAsteroidBehaviour : MonoBehaviour
             playersLife.TakeDamage(300);
             enemyscore.SubtractPoints(450);
             lifesUI.SubstractLifes(3);
-            Destroy(gameObject);
+            Instantiate(deadAnimation, transform.position, Quaternion.identity);
+            audioComponent.Play();
+            hide.enabled = false;
+            sCollider.enabled = false;
+            for (var i = 0; i < numberOfAsteroids; i++)
+            {
+                Instantiate(miniAsteroids[Random.Range(0, miniAsteroids.Length)], transform.position, Quaternion.identity);
+            }
+            Invoke("AutoDestroy", 1);
         }
         if (collision.gameObject.CompareTag("Wall"))
         {

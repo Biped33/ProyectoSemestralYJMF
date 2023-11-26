@@ -21,6 +21,7 @@ public class AsteroidBehaviourUp : MonoBehaviour
     {
         EnemyMovement();
     }
+
     private void FindObjects()
     {
         hide = GetComponent<SpriteRenderer>();
@@ -30,6 +31,7 @@ public class AsteroidBehaviourUp : MonoBehaviour
         enemyscore = FindObjectOfType<ScoreBehaviourLevel1>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
     }
+
     private void EnemyMovement()
     {
         transform.Translate(enemyPatroll.normalized * enemySpeed * Time.deltaTime);

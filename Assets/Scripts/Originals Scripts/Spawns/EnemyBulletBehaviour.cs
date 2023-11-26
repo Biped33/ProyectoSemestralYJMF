@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBulletBehaviour : MonoBehaviour
@@ -7,25 +5,31 @@ public class EnemyBulletBehaviour : MonoBehaviour
     private PlayerBehaviour playersLife;
     private LifesUIBehaviour lifesUI;
     private ScoreBehaviourLevel2 enemyscore;
-    private int bulletSpeed = 12;
+    public GameObject deadAnimation;
+    private int bulletSpeed = 15;
+
     void Start()
     {
         FindObjects();
     }
+
     void Update()
     {
         BulletMovement();
     }
+
     private void FindObjects()
     {
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviourLevel2>();
     }
+
     private void BulletMovement()
     {
         transform.Translate(Vector3.right.normalized * bulletSpeed * Time.deltaTime);
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -33,12 +37,13 @@ public class EnemyBulletBehaviour : MonoBehaviour
             playersLife.TakeDamage(100);
             enemyscore.SubtractPoints(150);
             lifesUI.SubstractLifes(1);
+            Instantiate(deadAnimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
+
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
         }
-
     }
 }

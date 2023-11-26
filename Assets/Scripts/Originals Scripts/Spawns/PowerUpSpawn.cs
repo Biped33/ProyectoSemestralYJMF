@@ -1,15 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUoSpawn : MonoBehaviour
+public class PowerUpSpawn : MonoBehaviour
 {
     public GameObject speedPoweUP, extraLifePowerUp;
     private float randomX, randomY, timer1 = 5f, timer2 = 15f;
-    void Start()
-    {
-
-    }
     void Update()
     {
         SpawnLife();

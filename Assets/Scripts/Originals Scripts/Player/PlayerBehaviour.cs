@@ -1,25 +1,27 @@
 using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
+    public float shootDelay = 1f;
     private int playerSpeed = 5;
-    private int life = 500;
-    private SpriteRenderer spriteShip;
+    private int life = 300;
     public Sprite upShip, normalShip, downShip;
     public GameObject bullet;
+    private SpriteRenderer spriteShip;
     private AudioSource audioComponent;
-    public float shootDelay = 1f;
     public Camera mainCamera;
+
     private void Start()
     {
-        audioComponent = GetComponent<AudioSource>();
-        spriteShip = GetComponent<SpriteRenderer>();
+       FindObjects();
     }
+
     private void Update()
     {
         PlayerMovement(transform, playerSpeed);
         Shoot();
         CameraRestriccions();
     }
+
     private void PlayerMovement(Transform transform, int playerSpeed)
     {
         spriteShip.sprite = normalShip;
@@ -42,6 +44,7 @@ public class PlayerBehaviour : MonoBehaviour
             transform.Translate(Vector3.left.normalized * playerSpeed * Time.deltaTime);
         }
     }
+
     private void Shoot()
     {
         shootDelay -= Time.deltaTime;
@@ -53,6 +56,7 @@ public class PlayerBehaviour : MonoBehaviour
             shootDelay = 0.18f;
         }
     }
+
     public void TakeDamage(int enemyDamage)
     {
         life -= enemyDamage;
@@ -61,14 +65,17 @@ public class PlayerBehaviour : MonoBehaviour
             WinLoseConditions.instance.LoseCondition();
         }
     }
+
     public void GainLife(int extralife)
     {
         life += extralife;
     }
+
     public void AddSpeed(int gainSpeed)
     {
         playerSpeed += gainSpeed;
     }
+
     private void CameraRestriccions()
     {
         float cameraHeight = mainCamera.orthographicSize;
@@ -78,5 +85,11 @@ public class PlayerBehaviour : MonoBehaviour
         float clampedX = Mathf.Clamp(playerX, mainCamera.transform.position.x - cameraWidth, mainCamera.transform.position.x + cameraWidth);
         float clampedY = Mathf.Clamp(playerY, mainCamera.transform.position.y - cameraHeight, mainCamera.transform.position.y + cameraHeight);
         transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+    }
+
+    private void FindObjects()
+    {
+        audioComponent = GetComponent<AudioSource>();
+        spriteShip = GetComponent<SpriteRenderer>();
     }
 }

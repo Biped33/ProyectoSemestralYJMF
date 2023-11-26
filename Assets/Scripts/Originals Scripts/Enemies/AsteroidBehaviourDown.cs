@@ -16,6 +16,7 @@ public class AsteroidBehaviourDown : MonoBehaviour
     {
         FindObjects();
     }
+
     void Update()
     {
         EnemyMovement();
@@ -29,7 +30,6 @@ public class AsteroidBehaviourDown : MonoBehaviour
         lifesUI = FindObjectOfType<LifesUIBehaviour>();
         enemyscore = FindObjectOfType<ScoreBehaviourLevel1>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
-
     }
     private void EnemyMovement()
     {

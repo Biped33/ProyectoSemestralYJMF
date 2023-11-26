@@ -29,18 +29,22 @@ public class EnemyShipBehaviourLevel3 : MonoBehaviour
         enemyscore = FindObjectOfType<ScoreBehaviourLevel3>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
     }
+
     private void EnemyMovement()
     {
         transform.Translate(Vector3.left.normalized * enemySpeed * Time.deltaTime);
     }
+
     private void TakeDamage(int damage)
     {
         lifeEnemyShip -= damage;
     }
+
     private void AutoDestroy()
     {
         Destroy(gameObject);
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullets"))

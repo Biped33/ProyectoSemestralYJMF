@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnShipsLevel2 : MonoBehaviour
@@ -8,16 +6,14 @@ public class SpawnShipsLevel2 : MonoBehaviour
     private float randomX;
     private float randomY;
     private float time = 1f;
-    void Start()
-    {
-    }
+
     void Update()
     {
         SpawnEnemy1();
     }
+
     private void SpawnEnemy1()
     {
-
         time -= Time.deltaTime;
         if (time <= 0)
         {

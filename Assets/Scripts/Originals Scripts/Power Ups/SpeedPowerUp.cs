@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class SpeedPowerUp : MonoBehaviour
@@ -8,8 +9,7 @@ public class SpeedPowerUp : MonoBehaviour
     Vector3 position;
     void Start()
     {
-        playersSpeed = FindObjectOfType<PlayerBehaviour>();
-        position = transform.position;
+        FindObjects();
     }
     void Update()
     {
@@ -45,5 +45,11 @@ public class SpeedPowerUp : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void FindObjects()
+    {
+        playersSpeed = FindObjectOfType<PlayerBehaviour>();
+        position = transform.position;
     }
 }

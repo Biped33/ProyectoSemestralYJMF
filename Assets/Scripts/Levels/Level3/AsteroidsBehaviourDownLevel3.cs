@@ -16,6 +16,7 @@ public class AsteroidsBehaviourDownLevel3 : MonoBehaviour
     {
         FindObjects();
     }
+
     void Update()
     {
         EnemyMovement();

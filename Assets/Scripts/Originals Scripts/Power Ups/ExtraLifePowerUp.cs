@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ExtraLifePowerUp : MonoBehaviour
@@ -7,11 +8,10 @@ public class ExtraLifePowerUp : MonoBehaviour
     private float t, timer = 15f;
     public float r, speed;
     Vector3 position;
+
     void Start()
     {
-        playersLife = FindObjectOfType<PlayerBehaviour>();
-        lifesUI = FindObjectOfType<LifesUIBehaviour>();
-        position = transform.position;
+        FindObjects();
     }
 
     void Update()
@@ -20,6 +20,7 @@ public class ExtraLifePowerUp : MonoBehaviour
         FunctionForTime();
         AutoDestroy();
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -29,6 +30,7 @@ public class ExtraLifePowerUp : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private Vector3 Path(float t)
     {
         float x = -speed * t;
@@ -37,10 +39,12 @@ public class ExtraLifePowerUp : MonoBehaviour
         Vector3 result = new Vector3(x, y, z);
         return result + position;
     }
+
     private void FunctionForTime()
     {
         t += Time.fixedDeltaTime;
     }
+
     private void AutoDestroy()
     {
         timer -= Time.deltaTime;
@@ -48,5 +52,12 @@ public class ExtraLifePowerUp : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void FindObjects()
+    {
+        playersLife = FindObjectOfType<PlayerBehaviour>();
+        lifesUI = FindObjectOfType<LifesUIBehaviour>();
+        position = transform.position;
     }
 }

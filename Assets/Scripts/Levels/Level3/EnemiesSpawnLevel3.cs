@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemiesSpawnLevel3 : MonoBehaviour
@@ -8,9 +6,7 @@ public class EnemiesSpawnLevel3 : MonoBehaviour
     private float randomX;
     private float randomY;
     private float time1 = 1f, time2 = 1f, time3 = 5f, time4 = 10f;
-    void Start()
-    {
-    }
+
     void Update()
     {
         SpawnEnemy1();
@@ -18,6 +14,7 @@ public class EnemiesSpawnLevel3 : MonoBehaviour
         SpawnEnemy3();
         SpawnEnemy4();
     }
+
     private void SpawnEnemy1()
     {
 
@@ -31,6 +28,7 @@ public class EnemiesSpawnLevel3 : MonoBehaviour
             time1 = 1.5f;
         }
     }
+
     private void SpawnEnemy2()
     {
         time2 -= Time.deltaTime;
@@ -43,6 +41,7 @@ public class EnemiesSpawnLevel3 : MonoBehaviour
             time2 = 1.5f;
         }
     }
+
     private void SpawnEnemy3()
     {
         time3 -= Time.deltaTime;
@@ -55,12 +54,13 @@ public class EnemiesSpawnLevel3 : MonoBehaviour
             time3 = 2f;
         }
     }
+
     private void SpawnEnemy4()
     {
         time4 -= Time.deltaTime;
         if (time4 <= 0)
         {
-            randomX = Random.Range(16, 18);
+            randomX = Random.Range(14, 16);
             randomY = Random.Range(8, -8);
             Vector3 enemySpawn = new Vector3(randomX, randomY, 0);
             Instantiate(enemy4, enemySpawn, Quaternion.identity);

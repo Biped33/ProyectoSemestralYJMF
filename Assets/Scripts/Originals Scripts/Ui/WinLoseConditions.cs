@@ -15,6 +15,7 @@ public class WinLoseConditions : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void WinConditionLevel1()
     {
         SceneManager.LoadScene(4);

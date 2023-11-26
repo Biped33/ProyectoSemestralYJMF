@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidsBehaviourUpLevel3 : MonoBehaviour
@@ -16,13 +14,14 @@ public class AsteroidsBehaviourUpLevel3 : MonoBehaviour
 
     void Start()
     {
-
         FindObjects();
     }
+
     void Update()
     {
         EnemyMovement();
     }
+
     private void FindObjects()
     {
         hide = GetComponent<SpriteRenderer>();
@@ -32,14 +31,17 @@ public class AsteroidsBehaviourUpLevel3 : MonoBehaviour
         enemyscore = FindObjectOfType<ScoreBehaviourLevel3>();
         playersLife = FindObjectOfType<PlayerBehaviour>();
     }
+
     private void EnemyMovement()
     {
         transform.Translate(enemyPatroll.normalized * enemySpeed * Time.deltaTime);
     }
+
     private void AutoDestroy()
     {
         Destroy(gameObject);
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullets"))
