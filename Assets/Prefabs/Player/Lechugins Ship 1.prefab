@@ -115,7 +115,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!82 &4856955703525740946
 AudioSource:
@@ -225,9 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a75d905110bc04a860d9d43ecfbe27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootDelay: 1
   upShip: {fileID: 21300000, guid: 10af89f5b9af24605a83d05e21dfdeb5, type: 3}
   normalShip: {fileID: 21300000, guid: 4f3ca6c2ba5724c4c90aee322cf79137, type: 3}
   downShip: {fileID: 21300000, guid: 65019c4b741d6493d97d4072eff8e23b, type: 3}
   bullet: {fileID: 6095026311488399055, guid: 6aa860b91dca03741a79086a66507add, type: 3}
-  shootDelay: 1
   mainCamera: {fileID: 0}
