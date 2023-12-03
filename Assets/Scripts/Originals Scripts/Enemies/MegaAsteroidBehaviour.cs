@@ -55,7 +55,7 @@ public class MegaAsteroidBehaviour : MonoBehaviour
             Destroy(collision.gameObject);
             if (asteroidLife <= 0)
             {
-                enemyscore.AddPoints(500);
+                enemyscore.AddPoints(800);
                 Destroy(collision.gameObject);
                 Instantiate(deadAnimation, transform.position, Quaternion.identity);
                 audioComponent.Play();
@@ -70,8 +70,8 @@ public class MegaAsteroidBehaviour : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            playersLife.TakeDamage(300);
-            enemyscore.SubtractPoints(450);
+            playersLife.TakeDamage(500);
+            enemyscore.SubtractPoints(400);
             lifesUI.SubstractLifes(3);
             Instantiate(deadAnimation, transform.position, Quaternion.identity);
             audioComponent.Play();

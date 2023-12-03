@@ -53,7 +53,7 @@ public class EnemyShipBehaviourLevel3 : MonoBehaviour
             Destroy(collision.gameObject);
             if (lifeEnemyShip <= 0)
             {
-                enemyscore.AddPoints(150);
+                enemyscore.AddPoints(200);
                 Destroy(collision.gameObject);
                 Instantiate(deadAnimation, transform.position, Quaternion.identity);
                 audioComponent.Play();
@@ -65,7 +65,7 @@ public class EnemyShipBehaviourLevel3 : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playersLife.TakeDamage(100);
-            enemyscore.SubtractPoints(350);
+            enemyscore.SubtractPoints(100);
             lifesUI.SubstractLifes(1);
             Instantiate(deadAnimation, transform.position, Quaternion.identity);
             audioComponent.Play();

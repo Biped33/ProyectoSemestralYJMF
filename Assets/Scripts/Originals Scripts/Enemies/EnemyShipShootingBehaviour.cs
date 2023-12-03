@@ -68,7 +68,7 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
             Destroy(collision.gameObject);
             if (lifeEnemyShip <= 0)
             {
-                enemyscore.AddPoints(200);
+                enemyscore.AddPoints(500);
                 Destroy(collision.gameObject);
                 Instantiate(deadAnimation, transform.position, Quaternion.identity);
                 dead.Play();
@@ -80,7 +80,7 @@ public class EnemyShipShootingBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playersLife.TakeDamage(300);
-            enemyscore.SubtractPoints(350);
+            enemyscore.SubtractPoints(250);
             lifesUI.SubstractLifes(3);
             dead.Play();
             hide.enabled = false;

@@ -19,7 +19,7 @@ public class ScoreBehaviourLevel3 : MonoBehaviour
     public void AddPoints(int value)
     {
         score += value;
-        if (score >= 8000)
+        if (score >= 9000)
         {
             WinLoseConditions.instance.WinConditionLevel3();
         }
